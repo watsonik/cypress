@@ -30,4 +30,13 @@ describe('Basic page interactions', () => {
             .should('equal', 'Option Two')
     })
 
+    it('should display the name of the most recently hovered item', () => {
+        cy.get('[data-cy="box-4-items-list"] > :nth-child(2)')
+            .trigger('mouseover')
+        
+        cy.get('[data-cy="box-4-selected-name"]')
+            .invoke('text')
+            .should('equal', 'Option Two')
+    })
+
 })
