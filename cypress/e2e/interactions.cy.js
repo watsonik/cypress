@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 alert(Cypress.env('MY_ENV_VARIABLE'));
 
 describe('Basic page interactions', () => {
@@ -8,7 +10,6 @@ describe('Basic page interactions', () => {
     it('sets the header text to the item\'s name when double clicked', () => {
         cy.get('[data-cy=box-1-items-list] > :nth-child(2)')
             .dblclick();
-
         cy.get('[data-cy=box-1-selected-name]')
             .invoke('text')
             .should('equal', 'Option Two');
