@@ -15,7 +15,7 @@ describe('Basic page interactions', () => {
     it('displays the correct count for the number of selected checkboxes', () => {
         cy.get('[data-cy=box-2-checkboxes] > :nth-child(1) input')
             .check();
-        
+
         cy.get('[data-cy="box-2-selected-count"]')
             .invoke('text')
             .should('equal', '1');
@@ -24,7 +24,7 @@ describe('Basic page interactions', () => {
     it('displays the name of the currently selected item', () => {
         cy.get('[data-cy="box-3-dropdown"]')
             .select('Option Two')
-        
+
         cy.get('[data-cy="box-3-selected-name"]')
             .invoke('text')
             .should('equal', 'Option Two')
@@ -33,7 +33,11 @@ describe('Basic page interactions', () => {
     it('should display the name of the most recently hovered item', () => {
         cy.get('[data-cy="box-4-items-list"] > :nth-child(2)')
             .trigger('mouseover')
-        
+            .debug();
+            // .then(() => {
+            //     debugger;
+            // })
+
         cy.get('[data-cy="box-4-selected-name"]')
             .invoke('text')
             .should('equal', 'Option Two')
